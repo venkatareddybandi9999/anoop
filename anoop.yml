@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  gather_facts: false
+  tasks: 
+    - name: install git
+      package:
+        name: git
+        state: present
+    - name: install http
+      package:
+        name: httpd
+        state: present
+    - name: copy file
+      copy:
+        src: text.txt 
+        dest: /var/text.txt
+    - name: restart service
+      service:
+        name: httpd
+        state: started
+...
+    
+
+          
